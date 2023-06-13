@@ -7,28 +7,41 @@ import FeedComponent from "../FeedComponent/FeedComponent";
 import SocialContext from "../SocialContext";
 
 import MyPosts from "./MyPosts/MyPosts";
-
+import LikedPosts from "./MyPosts/LikedPosts";
 
 const Main = () => {
-    const { user, setUser, posts, setPosts, savedPosts, setSavedPosts, myPosts, setMyPosts } =
+    const { user, setUser, posts, setPosts, likedPosts, setLikedPosts, myPosts, setMyPosts } =
         useContext(SocialContext);
     useEffect(() => {
+        setPosts([]);
         fetch("http://localhost:3000/posts")
             .then((res) => res.json())
             .then((fetchPosts) => setPosts([...posts, ...fetchPosts]));
-            console.log([...posts]);
-    },[]);
+        console.log([...posts]);
+    }, []);
+    useEffect(() => {
+        setLikedPosts([]);
+        fetch("http://localhost:3000/posts/saved/1")
+            .then((res) => res.json())
+            .then((fetchPosts) => setLikedPosts([...likedPosts, ...fetchPosts]));
+        console.log([...likedPosts]);
+    }, []);
+    useEffect(() => {
+        setMyPosts([]);
+        fetch("http://localhost:3000/posts/1")
+            .then((res) => res.json())
+            .then((fetchPosts) => setMyPosts([...myPosts, ...fetchPosts]));
+        console.log([...myPosts]);
+    }, []);
     return (
         <div>
             <Sidebar></Sidebar>
             <Routes>
-                <Route>Posts</Route>
-                <Route>Saved</Route>
-                <Route>My Posts</Route>
-                <Route>Profile</Route>
-
+                <Route path="/posts" element={<FeedComponent />} />
+                <Route path="/likes" element={<LikedPosts />} />
+                <Route path="/myposts" element={<MyPosts />} />
+                <Route path="/profile" element={<User />} />
             </Routes>
-            <FeedComponent/>
 
         </div>
     );

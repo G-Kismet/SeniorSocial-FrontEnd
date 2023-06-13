@@ -6,13 +6,14 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import EmailIcon from "@mui/icons-material/Email";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import logo from "./New-senior-social-logo.jpg";
+import logo from "./Logo with Tag (1).jpg";
 import UserPosts from "../../FeedComponent/UserPost";
+import HouseIcon from '@mui/icons-material/House';
 const SideBar = () => {
     const [collapsed, setCollapsed] = useState(false);
     const style = {
         height: "100%",
-        backgroundColor: "#01FFFF",
+        backgroundColor: "#001c57",
         fontSize: "20px",
         fontWeight: "600",
         position: "fixed",
@@ -47,9 +48,9 @@ const SideBar = () => {
                         See Posts
                     </MenuItem>
                     <MenuItem icon={<FavoriteBorderIcon fontSize='large'/>} component={<Link to="/likes" />} style={ pStyle}>
-                        Likes
+                        Liked Posts
                     </MenuItem>
-                    <MenuItem icon={<EmailIcon fontSize='large'/>} component={<Link to="/message" />} style={ pStyle}>
+                    <MenuItem icon={<HouseIcon fontSize='large'/>} component={<Link to="/myposts" />} style={ pStyle}>
                         My Posts
                     </MenuItem>
                     <MenuItem icon={<AccountCircleIcon fontSize='large'/>} component={<Link to="/profile" />} style={ pStyle}>
@@ -62,12 +63,6 @@ const SideBar = () => {
                     </MenuItem>
                 </Menu>
             </Sidebar>
-
-
-            {/* <div style={tStyle}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora illo earum totam odit at dolorem temporibus quo fuga similique perspiciatis atque, officiis quisquam consequuntur impedit quos nam maxime quasi, esse quod! Reiciendis ullam dignissimos officiis incidunt mollitia sed distinctio nihil eveniet. Amet quibusdam deserunt quaerat similique ullam quod inventore dolore.</div> */}
-
-            
-
         </div>
     );
 };
